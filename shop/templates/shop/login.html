@@ -1,0 +1,88 @@
+{% load static %}
+{% load widget_tweaks %}
+<head>
+    <title>Elite Shoppy an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Jeweler Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+       Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+       addEventListener("load", function () {
+           setTimeout(hideURLbar, 0);
+       }, false);
+       
+       function hideURLbar() {
+           window.scrollTo(0, 1);
+       }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="{% static 'shop/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="{% static 'shop/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="{% static 'shop/css/style.css' %}" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
+ </head>
+<body>	
+   
+ 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					    
+						<div  class="modal-body modal-body-sub_agile">
+						<div class="col-md-8 modal_body_left modal_body_left1">
+						<div style="float: right;width:400px;height:450px;margin-right: 460px;border:1px solid black;text-align:center" >
+						    <br>
+						<h3 class="agileinfo_sign" >Sign In <span>Now</span></h3>
+							 <form action="" method="post"  novalidate class="shadow p-5">
+						          
+						   {% csrf_token %}
+						   {% for fm in form %}
+						    <div class="form-group">
+							{{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
+							</div>
+							{% endfor %}
+							<br>
+							<small><a href="{% url 'index' %}">Forgot Password ? </a></small><br>
+							<br>
+							<input type="submit" class="btn
+							btn-primary  mt-4" value="Sign In">
+							<br>
+							<br>
+							<br>
+							<div class="text-center text-primary
+							 fw-bold"><small>New to Shopping ? <a href="{% url 'index' %} 
+							 " class="text-danger">Create an Account </a> </small></div>
+							 {% if form.non_field_errors %}
+							  {% for error in form.non_field_errors %}
+							    <p class="alert alert-danger my-3">{{error}}</p>
+							  {% endfor %}
+							 {% endif %}	
+
+							</form>
+
+														<div class="clearfix"></div>
+														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Don't have an account?</a></p>
+
+						      </div>
+							 
+                          </div>
+                            
+						
+
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- //Modal content-->
+			</div>
+		</div>
+<!-- //Modal1 -->
+ 
+ </body>

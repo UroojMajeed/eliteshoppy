@@ -1,0 +1,105 @@
+{% load static %}
+{% load widget_tweaks %}
+<head>
+    <title>Elite Shoppy an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Jeweler Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+       Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+       addEventListener("load", function () {
+           setTimeout(hideURLbar, 0);
+       }, false);
+       
+       function hideURLbar() {
+           window.scrollTo(0, 1);
+       }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="{% static 'shop/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="{% static 'shop/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="{% static 'shop/css/style.css' %}" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
+ </head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data" class="row g-3"> 
+    <h1 style="text-align:center">Add Products</h1>
+    <br>
+    <br>
+    <div style="margin-left: 450px; width:500px;height:600px;border:1px solid black;background-color: grey;color:white">
+    {% csrf_token %}
+    
+     <div class="col-md-6">
+     <br>
+     <br>
+        <label for="product_name" class="form label">{{form.product_name.label}}</label>
+        <br>
+        <br>
+     
+      {{form.product_name|add_class:"form-control"}}
+      <br>
+      <br>
+     </div>
+    <div class="col-md-6">
+        <label for="product_price" class="form label">{{form.product_price.label}}</label>
+        <br>
+        <br>
+     
+      {{form.product_price|add_class:"form-control"}}
+      <br>
+      <br>
+     </div>
+    <div class="col-md-6">
+        <label for="product_image_front" class="form label">{{form.product_image_front.label}}</label>
+        <br>
+        <br>
+     
+      {{form.product_image_front|add_class:"form-control"}}
+        <br>
+      <br>
+     </div>
+     <div class="col-md-6">
+        <label for="product_image_back" class="form label">{{form.product_image_back.label}}</label>
+        <br>
+        <br>
+     
+      {{form.product_image_back|add_class:"form-control"}}
+        <br>
+      <br>
+     </div>
+         <div class="col-md-6">
+        <label for="product_spects" class="form label">{{form.product_spects.label}}</label>
+        <br>
+        <br>
+     
+      {{form.product_spects|add_class:"form-control"}}
+        <br>
+      <br>
+     </div>
+
+    <div class="col-md-6">
+        <label for="category" class="form label">{{form.category.label}}</label>
+        <br>
+        <br>
+     
+      {{form.category|add_class:"form-control"}}
+        <br>
+      <br>
+     </div>
+
+    <input style="background-color:white ;width:120px;height:45px ;margin-left: 200px; color: black;  font-size:150% ;text-align: center;border-radius: 12px;" type="submit" value="Save">
+    
+    </div>
+
+
+    </form>
+    
+    </body>

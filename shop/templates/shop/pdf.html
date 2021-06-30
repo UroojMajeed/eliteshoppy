@@ -1,0 +1,78 @@
+{% load widget_tweaks %}
+
+<head>
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
+    	<h1  style="text-align:center;" > Elite Shoppy </h1>
+    </div>
+
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">(c) - page <pdf:pagenumber>
+        of <pdf:pagecount>
+    </div>
+
+    <!-- HTML Content -->
+      
+    <table>
+    		<tr>
+    			<td><strong>Address:</strong> Pakpattan Bazar </td>
+    			<td><strong>Phone:</strong> 0321 6756754</td>
+    		</tr>
+    		<tr>
+    			<td><strong>City:</strong> Sahiwal, Pakistan</td>
+    			<td><strong>Email:</strong> eliteshoppy@gmail.com</td>
+    		</tr>
+    		<tr>
+    			<td><strong>Zipcode:</strong> 57000 </td>
+    			<td><strong>Website:</strong> eliteshoppy.com</td>
+    		</tr>
+    </table>
+
+    <hr>
+
+    <table class="table border">
+      <thead>
+    	<tr>
+ 
+    		<th>Product</th>
+    		<th>Price</th>
+    		<th>Quantity</th>
+    	</tr>
+        </thead>
+        <tbody>
+    	{% for item in cart_items %}
+    	 <tr class="tr border">
+ 
+    		<td>{{item.product.product_name}}</td>
+    		<td>${{item.total_cost}}</td>
+    		<td>{{item.quantity}}</td>
+    	</tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <hr>
+
+    <p><strong>Total: ${{totalamount}}</strong></p>
+</body>
+</html>

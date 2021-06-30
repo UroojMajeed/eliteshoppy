@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Sign Up</H1> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"> First Name </th>
+                <th scope="col"> Last Name </th>
+                <th scope="col"> Email </th>
+                <th scope="col"> Password </th>
+                <th scope="col"> Phone </th>
+                <th scope="col"> Date of Birth </th>
+                <th scope="col"> Date </th>
+                <th scope="col"> Time </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in dat %}
+            <tr>
+                <td>{{data.us_first_name }} </td>
+                <td>{{data.us_last_name}} </td>
+                <td>{{data.us_email }} </td>
+                <td>{{data.us_password}} </td>
+                <td>{{data.us_phone }} </td>
+                <td>{{data.us_DOB}} </td>
+                <td>{{data.us_date }} </td>
+                <td>{{data.us_time}} </td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

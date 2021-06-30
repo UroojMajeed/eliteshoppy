@@ -1,0 +1,62 @@
+{% load static %}
+{% load widget_tweaks %}
+<head>
+    <title>Elite Shoppy an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Jeweler Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+       Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+       addEventListener("load", function () {
+           setTimeout(hideURLbar, 0);
+       }, false);
+       
+       function hideURLbar() {
+           window.scrollTo(0, 1);
+       }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="{% static 'shop/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="{% static 'shop/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="{% static 'shop/css/style.css' %}" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
+ </head>
+<body>
+  
+<div class="col-md-6 contact-form">
+						<h4 class="white-w3ls">Contact <span>Form</span></h4>
+						<form action="" method="POST" enctype="multipart/form-data">
+						 {% csrf_token %}
+							<div class="styled-input agile-styled-input-top">
+								<input {{form.name}} >
+								
+							</div>
+							<div class="styled-input">
+								<input {{form.email}}> 
+								
+							</div> 
+							<div class="styled-input">
+								<input {{form.subject}}>
+								
+								
+							</div>
+							<div class="styled-input">
+								<input {{form.message}} > 
+								
+							</div>	 
+							
+							<input type="submit" value="SEND">
+						</form>
+					</div>
+				</div>
+                 </form>
+    
+    </body>
