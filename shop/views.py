@@ -324,15 +324,16 @@ def payment_done(request):
     custid = request.GET.get('custid') 
     customer = Customer.objects.get(id=custid)
     cart = carts.objects.filter(user=user)
-    subject = 'Code Band'
-    message = 'Sending Email through Gmail'
-    #mail=Customer.objects.get(customer.email)
-    recipient = request.user.email
-    send_mail(subject, 
-              message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
+    
     for c in cart:
         Placed.objects.create(order=max_val, Product=c.product, quantity=c.quantity,Customer=customer,user=user)
+        message = 'Product: '+str(c.product)  + '  Quantity: '+str(c.quantity) + '  Price: '+str(c.total_cost) 
+        subject = 'Order Confirmed'
 
+        #mail=Customer.objects.get(customer.email)
+        recipient = request.user.email
+        send_mail(subject, 
+           message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
         c.delete()
     
     return redirect("index")
