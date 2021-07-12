@@ -384,3 +384,15 @@ class DownloadPDF(View):
             content = "attachment; filename='%s'" %(filename)
             response['Content-Disposition'] = content
             return response
+def reset(request):
+    form = MyPasswordResetForm()
+    if request.method == 'POST':
+        form = MyPasswordResetForm(request.POST)
+        if form.is_valid():
+            subject = 'Reset Password'
+            recipient = form.cleaned_data.get('email')
+            send_mail(subject, 
+               settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
+            messages.success(request, 'Success!')
+            return redirect('password_reset')
+    return render(request, 'shop/index.html', {'form': form})

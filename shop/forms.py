@@ -1,8 +1,9 @@
 from django.db.models import fields
 from .models import *
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField 
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordResetForm, SetPasswordForm 
 from django.contrib.auth.models import User
+from django.contrib.auth import password_validation
 from django.utils.translation import gettext, gettext_lazy as _
 class addproduct(forms.ModelForm):
     class Meta:
@@ -41,3 +42,17 @@ class CustomerProfileForm(forms.ModelForm):
         {'class':'form-control'}), 'postal_code':forms.TextInput(attrs=
         {'class':'form-control'}), 'state':forms.TextInput(attrs=
         {'class':'form-control'})}
+class MyPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(label=_("Email"), max_length=254,
+    widget=forms.EmailInput(attrs={'autocomplete': 'email', 
+    'class':'form-control'}))
+
+class MySetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(label=_("New Password"),
+    strip=False, widget=forms.PasswordInput(attrs=
+    {'autocomplete': 'new-password', 'class':'form-control'}),
+    help_text=password_validation.
+    password_validators_help_text_html())
+    new_password2 = forms.CharField(label=_("Confirm New Password"),
+    strip=False, widget=forms.PasswordInput(attrs=
+    {'autocomplete': 'new-password', 'class':'form-control'}))
