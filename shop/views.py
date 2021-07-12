@@ -396,3 +396,5 @@ def reset(request):
             messages.success(request, 'Success!')
             return redirect('password_reset')
     return render(request, 'shop/index.html', {'form': form})
+def order_complete(request):
+    return render(request,'shop/order_complete.html')

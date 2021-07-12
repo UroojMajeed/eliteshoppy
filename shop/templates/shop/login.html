@@ -38,6 +38,9 @@
 					    
 						<div  class="modal-body modal-body-sub_agile">
 						<div class="col-md-8 modal_body_left modal_body_left1">
+						<div class="d-grid" style="margin-left:50px"><a href="{% url 'index' %}"
+		                class="item_add single-item hvr-outline-out button2">Close</a></div>
+		                 </div>
 						<div style="float: right;width:400px;height:450px;margin-right: 460px;border:1px solid black;text-align:center" >
 						    <br>
 						<h3 class="agileinfo_sign" >Sign In <span>Now</span></h3>
@@ -50,7 +53,7 @@
 							</div>
 							{% endfor %}
 							<br>
-							<small><a href="{% url 'index' %}">Forgot Password ? </a></small><br>
+							<small><a href="{% url 'password_reset' %}">Forgot Password ? </a></small><br>
 							<br>
 							<input type="submit" class="btn
 							btn-primary  mt-4" value="Sign In">

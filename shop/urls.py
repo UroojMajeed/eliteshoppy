@@ -33,6 +33,7 @@ urlpatterns = [
    path('pluscart/', views.plus_cart),
    path('minuscart/', views.minus_cart),
    path('removecart/', views.remove_cart),
+   path('order_complete',views.order_complete,name=('order_complete')),
    path('emptycart',views.emptycart,name=('emptycart')),
    path('accounts/login/', auth_views.LoginView.as_view(template_name='shop/login.html', 
    authentication_form=LoginForm), name='login'),
