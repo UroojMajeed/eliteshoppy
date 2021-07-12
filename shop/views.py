@@ -336,7 +336,7 @@ def payment_done(request):
            message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
         c.delete()
     
-    return redirect("index")
+    return redirect("order_complete")
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
     html  = template.render(context_dict)
