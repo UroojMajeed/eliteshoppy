@@ -18,13 +18,13 @@
     </script>
     <!--//meta tags ends here-->
     <!--booststrap-->
-    <link href="{% static 'shop/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'brand/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
     <!--//booststrap end-->
     <!-- font-awesome icons -->
-    <link href="{% static 'shop/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'brand/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
     <!-- //font-awesome icons -->
     <!--stylesheets-->
-    <link href="{% static 'shop/css/style.css' %}" rel='stylesheet' type='text/css' media="all">
+    <link href="{% static 'brand/css/style.css' %}" rel='stylesheet' type='text/css' media="all">
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
@@ -32,19 +32,24 @@
 <body>	
    
  	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+	 
 			<div class="modal-dialog">
 				<!-- Modal content-->
+
 				<div class="modal-content">
-					    
+				<br>
+
+						
 						<div  class="modal-body modal-body-sub_agile">
+					
 						<div class="col-md-8 modal_body_left modal_body_left1">
-						<div class="d-grid" style="margin-left:50px"><a href="{% url 'index' %}"
-		                class="item_add single-item hvr-outline-out button2">Close</a></div>
-		                 </div>
-						<div  >
+						<div style="width:550px;height:550px;border:5px solid black;" >
 						    <br>
+							<br> 
+							 <br> 
+							 
 							
-						<h3 class="agileinfo_sign" >Sign In <span>Now</span></h3>
+						<h3  style="text-align:center"class="agileinfo_sign" > Sign In <span>Now</span></h3>
 							 <form action="" method="post"  novalidate class="shadow p-5">
 						          
 						   {% csrf_token %}
@@ -54,15 +59,18 @@
 							</div>
 							{% endfor %}
 							<br>
-							<small><a href="{% url 'password_reset' %}">Forgot Password ? </a></small><br>
 							<br>
-							<input type="submit" class="btn
+							<small style="text-align:center" ><a href="{% url 'password_reset' %}" >Forgot Password ? </a></small><br>
+							<br>
+							<br>
+							
+							<input style="text-align:center" type="submit" class="btn
 							btn-primary  mt-4" value="Sign In">
 							<br>
 							<br>
 							<br>
-							<div class="text-center text-primary
-							 fw-bold"><small>New to Shopping ? <a href="{% url 'index' %} 
+							<div style="text-align:center" class="text-center text-primary
+							 fw-bold"><small style="text-align:center">New to Shopping ? <a href="{% url 'index' %} 
 							 " class="text-danger">Create an Account </a> </small></div>
 							 {% if form.non_field_errors %}
 							  {% for error in form.non_field_errors %}
@@ -73,9 +81,18 @@
 							</form>
 
 														<div class="clearfix"></div>
-														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Don't have an account?</a></p>
-
-						      </div>
+														<p style="text-align:center"><a href="#" data-toggle="modal" data-target="#myModal2" > Don't have an account?</a></p>
+                             <br> 
+							 <br> 
+							 <br>
+							  <br> 
+							
+							 
+						    <div class="d-grid" style="margin-left:450px"><a href="{% url 'index' %}"
+		                class="item_add single-item hvr-outline-out button2">Close</a></div>
+		                 </div>
+							  </div>
+							  
 							 
                           </div>
                             
