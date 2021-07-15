@@ -1,0 +1,26 @@
+{% load widget_tweaks %}
+
+<head>
+
+</head>
+
+<body>
+    
+    
+ <h4><strong>Order Summary</strong></h4>
+    <hr>
+      {% for item in cart_items %}
+           
+            <p><strong>Product:</strong> {{item.product.product_name}}</p>
+            <p><strong>Quantity:</strong> {{item.quantity}}</p>
+            <p><strong>Price:</strong>{{item.total_cost}}</p>
+            <br>
+      {% endfor %}
+      <br>
+      <p><strong>Total Bill + $ 1 =</strong> {{totalamount}}</p>
+      <br>
+	  <br>  
+
+   
+</body>
+</html>

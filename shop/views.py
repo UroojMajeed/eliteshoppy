@@ -17,6 +17,10 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context, Template, RequestContext
 
 def home(request):
     return render(request,'shop/index.html')
@@ -324,19 +328,31 @@ def payment_done(request):
     custid = request.GET.get('custid') 
     customer = Customer.objects.get(id=custid)
     cart = carts.objects.filter(user=user)
+    user = request.user
+
+    cart_items = carts.objects.filter(user=user)
+    amount = 0
+    shipping_amount = 1
+    totalamount = 0
+    cart_product = [p for p in carts.objects.all() if p.user == request.user]
+    if cart_product:
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.product_price)
+            amount += tempamount
+        totalamount = amount + shipping_amount
+    msg_plain = render_to_string('email.txt')
+    context = {'cart_items':cart_items,'totalamount':totalamount}
+    msg_html = render_to_string('email.html', context)
+    #recipient =  request.user.email
+    send_mail("Your order has been placed", msg_plain, settings.EMAIL_HOST_USER,
+              [user.email], html_message = msg_html)
     
     for c in cart:
         Placed.objects.create(order=max_val, Product=c.product, quantity=c.quantity,Customer=customer,user=user)
-        message = 'Product: '+str(c.product)  + '  Quantity: '+str(c.quantity) + '  Price: '+str(c.total_cost) 
-        subject = 'Order Confirmed'
-
-        #mail=Customer.objects.get(customer.email)
-        recipient = request.user.email
-        send_mail(subject, 
-           message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
+       
         c.delete()
     
-    return redirect("order_complete")
+    return render(request, 'shop/order_complete.html', {'cart_items':cart_items, 'totalamount':totalamount})
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
     html  = template.render(context_dict)
