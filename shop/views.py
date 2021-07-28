@@ -17,6 +17,10 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context, Template, RequestContext
 
 def home(request):
     return render(request,'shop/index.html')
@@ -324,18 +328,31 @@ def payment_done(request):
     custid = request.GET.get('custid') 
     customer = Customer.objects.get(id=custid)
     cart = carts.objects.filter(user=user)
-    subject = 'Code Band'
-    message = 'Sending Email through Gmail'
-    #mail=Customer.objects.get(customer.email)
-    recipient = request.user.email
-    send_mail(subject, 
-              message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
+    user = request.user
+
+    cart_items = carts.objects.filter(user=user)
+    amount = 0
+    shipping_amount = 1
+    totalamount = 0
+    cart_product = [p for p in carts.objects.all() if p.user == request.user]
+    if cart_product:
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.product_price)
+            amount += tempamount
+        totalamount = amount + shipping_amount
+    msg_plain = render_to_string('email.txt')
+    context = {'cart_items':cart_items,'totalamount':totalamount}
+    msg_html = render_to_string('email.html', context)
+    #recipient =  request.user.email
+    send_mail("Your order has been placed", msg_plain, settings.EMAIL_HOST_USER,
+              [user.email], html_message = msg_html)
+    
     for c in cart:
         Placed.objects.create(order=max_val, Product=c.product, quantity=c.quantity,Customer=customer,user=user)
-
+       
         c.delete()
     
-    return redirect("index")
+    return render(request, 'shop/order_complete.html', {'cart_items':cart_items, 'totalamount':totalamount})
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
     html  = template.render(context_dict)
@@ -383,3 +400,17 @@ class DownloadPDF(View):
             content = "attachment; filename='%s'" %(filename)
             response['Content-Disposition'] = content
             return response
+def reset(request):
+    form = MyPasswordResetForm()
+    if request.method == 'POST':
+        form = MyPasswordResetForm(request.POST)
+        if form.is_valid():
+            subject = 'Reset Password'
+            recipient = form.cleaned_data.get('email')
+            send_mail(subject, 
+               settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
+            messages.success(request, 'Success!')
+            return redirect('password_reset')
+    return render(request, 'shop/index.html', {'form': form})
+def order_complete(request):
+    return render(request,'shop/order_complete.html')
