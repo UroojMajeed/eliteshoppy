@@ -32,24 +32,15 @@
 <body>	
    
  	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-	 
 			<div class="modal-dialog">
 				<!-- Modal content-->
-
 				<div class="modal-content">
-				<br>
-
-						
+					    
 						<div  class="modal-body modal-body-sub_agile">
-					
 						<div class="col-md-8 modal_body_left modal_body_left1">
-						<div style="width:420px;height:550px;border:5px solid black;" >
+						<div style="float: right;width:400px;height:450px;margin-right: 460px;border:1px solid black;text-align:center" >
 						    <br>
-							<br> 
-							 <br> 
-							 
-							
-						<h3  style="text-align:center"class="agileinfo_sign" > Sign In <span>Now</span></h3>
+						<h3 class="agileinfo_sign" >Sign In <span>Now</span></h3>
 							 <form action="" method="post"  novalidate class="shadow p-5">
 						          
 						   {% csrf_token %}
@@ -59,19 +50,16 @@
 							</div>
 							{% endfor %}
 							<br>
+							<small><a href="{% url 'index' %}">Forgot Password ? </a></small><br>
 							<br>
-							<small style="text-align:center" ><a href="{% url 'password_reset' %}" >Forgot Password ? </a></small><br>
-							<br>
-							<br>
-							
-							<input style="text-align:center" type="submit" class="btn
+							<input type="submit" class="btn
 							btn-primary  mt-4" value="Sign In">
 							<br>
 							<br>
 							<br>
-							<div style="text-align:center" class="text-center text-primary
-							 fw-bold"><small style="text-align:center">New to Shopping ? <a href="{% url 'index' %} 
-							 " class="text-danger">Create an Account by Sign up </a> </small></div>
+							<div class="text-center text-primary
+							 fw-bold"><small>New to Shopping ? <a href="{% url 'index' %} 
+							 " class="text-danger">Create an Account </a> </small></div>
 							 {% if form.non_field_errors %}
 							  {% for error in form.non_field_errors %}
 							    <p class="alert alert-danger my-3">{{error}}</p>
@@ -81,18 +69,9 @@
 							</form>
 
 														<div class="clearfix"></div>
-														<p style="text-align:center"><a href="#" data-toggle="modal" data-target="#myModal2" > Don't have an account?</a></p>
-                             <br> 
-							 <br> 
-							 <br>
-							  <br> 
-							
-							 
-						    <div class="d-grid" style="margin-left:320px"><a href="{% url 'index' %}"
-		                class="item_add single-item hvr-outline-out button2">Close</a></div>
-		                 </div>
-							  </div>
-							  
+														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Don't have an account?</a></p>
+
+						      </div>
 							 
                           </div>
                             
